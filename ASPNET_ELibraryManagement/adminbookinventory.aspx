@@ -66,7 +66,7 @@
                            <asp:DropDownList class="form-control" ID="DropDownList2" runat="server">
                               <asp:ListItem Text="Publisher 1" Value="Publisher 1" />
                               <asp:ListItem Text="Publisher 2" Value="Publisher 2" />
-                               <asp:ListItem Text="Publisher 3" Value="Publisher 3" />
+                               
                            </asp:DropDownList>
                         </div>
                      </div>
