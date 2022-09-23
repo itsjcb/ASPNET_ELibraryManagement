@@ -11,7 +11,65 @@ namespace ASPNET_ELibraryManagement
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            try
+            {
+                if (Session["role"].Equals(""))
+                {
+                    btnUserLogin.Visible = true;
+                    btnUserSignUp.Visible = true;
+                    btnLogout.Visible = false;
+                    btnHelloUser.Visible = false;
+                    
 
+                    //footer
+                    BtnAdminLogin.Visible = true;
+                    BtnAuthorManagement.Visible = false;
+                    BtnPublisherManagement.Visible = false;
+                    BtnBookInventory.Visible = false;
+                    BtnBookIssuing.Visible = false;
+                    BtnMemberManagement.Visible = false;
+                     
+                }
+                else if (Session["role"].Equals("user"))
+                {
+                    btnUserLogin.Visible = false;
+                    btnUserSignUp.Visible = false;
+                    btnLogout.Visible = true;
+                    btnHelloUser.Visible = true;
+                    btnHelloUser.Text = "Hello" + Session["username"].ToString();
+
+                    //footer
+                    BtnAdminLogin.Visible = true;
+                    BtnAuthorManagement.Visible = false;
+                    BtnPublisherManagement.Visible = false;
+                    BtnBookInventory.Visible = false;
+                    BtnBookIssuing.Visible = false;
+                    BtnMemberManagement.Visible = false;
+
+                }
+                else if (Session["role"].Equals("admin"))
+                {
+                    btnUserLogin.Visible = false;
+                    btnUserSignUp.Visible = false;
+                    btnLogout.Visible = true;
+                    btnHelloUser.Visible = true;
+                    btnHelloUser.Text = "Hello Admin";
+
+                    //footer
+                    BtnAdminLogin.Visible = false;
+                    BtnAuthorManagement.Visible = true;
+                    BtnPublisherManagement.Visible = true;
+                    BtnBookInventory.Visible = true;
+                    BtnBookIssuing.Visible = true;
+                    BtnMemberManagement.Visible = true;
+
+                }
+            }
+            catch(Exception ex)
+            {
+                //Response.Write("<script>alert('" + ex.Message + "');</script>");
+            }
+            
         }
 
         protected void BtnAdminLogin_Click(object sender, EventArgs e)
